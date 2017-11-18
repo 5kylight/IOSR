@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DividersProductService {
 
-    @RequestMapping("/dividers-product/{integer}")
+    @RequestMapping("/{integer}")
     public Long getDividers(@PathVariable("integer") int integer) {
         return 0L;
     }
