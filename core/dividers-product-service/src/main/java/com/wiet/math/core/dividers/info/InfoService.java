@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class InfoService {
 
-
     @RequestMapping("/info")
     public String getInfo() {
         return "DividersProductService instance";
