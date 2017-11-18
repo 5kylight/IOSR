@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.wiet.math.core</groupId>
-	<artifactId>dividers-service</artifactId>
+	<artifactId>dividers-product-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>dividers-product-service</name>
-	<description>Service returning all dividers of a number</description>
+	<description>Service returning product of all dividers of a number</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
