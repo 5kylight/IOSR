@@ -1,2 +1,7 @@
-*/.idea/*
-*/.idea
+*.idea/*
+*.idea
+example/*
+example
+spring-oauth2-zuul/*
+spring-oauth2-zuul
+*.iml
