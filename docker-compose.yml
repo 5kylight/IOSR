@@ -1,0 +1,29 @@
+version: '2.1'
+services:
+  discovery:
+    image: localhost:5000/discovery:latest
+    restart: always
+
+    ports:
+     - "8761:8761"
+  gateway:
+    image: localhost:5000/gateway:latest
+    restart: always
+    links:
+        - discovery
+    ports:
+     - "8765:8765"
+  dividers-product:
+    image: localhost:5000/dividers-product-service:latest
+    restart: always
+    links:
+        - discovery
+    ports:
+     - "1111:1111"
+  dividers:
+    image: localhost:5000/dividers-service:latest
+    restart: always
+    links:
+        - discovery
+    ports:
+     - "1112:11112"
