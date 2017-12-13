@@ -32,5 +32,5 @@ server:
 
 logging:
     level:
-        ROOT: INFO
-        org.springframework.web: INFO
+        ROOT: WARN
+        org.springframework.web: WARN

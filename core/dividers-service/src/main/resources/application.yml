@@ -9,3 +9,6 @@ eureka:
   instance:
     preferIpAddress: true
     lease-renewal-interval-in-seconds: 10
+logging:
+    level:
+        ROOT: WARN

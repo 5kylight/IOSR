@@ -6,3 +6,7 @@ eureka:
     fetchRegistry: false
     healthcheck:
       enabled: true
+
+logging:
+    level:
+        ROOT: WARN
