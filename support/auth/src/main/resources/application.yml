@@ -1,0 +1,14 @@
+server:
+  port: 8760
+
+eureka:
+  client:
+    registry-fetch-interval-seconds: 5
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka
+  instance:
+    preferIpAddress: true
+    lease-renewal-interval-in-seconds: 10
+logging:
+    level:
+        ROOT: WARN

@@ -6,9 +6,23 @@ services:
 
     ports:
      - "8761:8761"
+
+  auth:
+    image: localhost:5000/auth:latest
+    restart: always
+    depends_on:
+     discovery:
+        condition: service_healthy
+    ports:
+     - "8760:8760"
+
   gateway:
     image: localhost:5000/gateway:latest
     restart: always
+    depends_on:
+         discovery:
+            condition: service_healthy
+
     links:
         - discovery
     ports:
@@ -16,6 +30,9 @@ services:
   dividers-product:
     image: localhost:5000/dividers-product-service:latest
     restart: always
+    depends_on:
+         discovery:
+            condition: service_healthy
     links:
         - discovery
     ports:
@@ -23,7 +40,10 @@ services:
   dividers:
     image: localhost:5000/dividers-service:latest
     restart: always
+    depends_on:
+         discovery:
+            condition: service_healthy
     links:
         - discovery
     ports:
-     - "1112:11112"
+     - "1112:1112"
