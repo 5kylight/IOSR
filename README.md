@@ -24,7 +24,7 @@ For local env:
 * Zuul server: http://localhost:8765/
 * Example call to service through zuul gateway: http://localhost:8765/dividers-product/10
 
-### Build proccess
+### Build process
 For maven build: 
 * Make sure you have docker and docer-compose installed
 * Make sure you have run you local repository, or run it with command 
