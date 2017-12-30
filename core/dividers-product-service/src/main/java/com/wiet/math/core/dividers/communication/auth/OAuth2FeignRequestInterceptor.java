@@ -28,10 +28,11 @@ public class OAuth2FeignRequestInterceptor implements RequestInterceptor {
         if (template.headers().containsKey(AUTHORIZATION_HEADER)) {
             LOGGER.warn("The Authorization token has been already set");
         } else if (oauth2ClientContext.getAccessTokenRequest().getExistingToken() == null) {
-            LOGGER.warn("Can not obtain existing token for request, if it is a non secured request, ignore.");
+            LOGGER.warn("Cannot obtain existing token for request, if it is a non secured request, ignore.");
         } else {
             String token = oauth2ClientContext.getAccessTokenRequest().getExistingToken().toString();
-            LOGGER.warn("Constructing Header {} for TokenType {} and TokenValue {}", AUTHORIZATION_HEADER, BEARER_TOKEN_TYPE, token);
+            String tokenMsg = "of length: " + token.length();
+            LOGGER.warn("Constructing Header {} for TokenType {} and TokenValue {}", AUTHORIZATION_HEADER, BEARER_TOKEN_TYPE, tokenMsg);
             template.header(AUTHORIZATION_HEADER, String.format("%s %s", BEARER_TOKEN_TYPE, token));
         }
     }
