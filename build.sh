@@ -1,0 +1,1 @@
+mvn package dockerfile:build dockerfile:push -Dmaven.test.skip=true
