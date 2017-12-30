@@ -14,7 +14,8 @@
 	<modules>
 		<module>gateway</module>
 		<module>discovery</module>
-	</modules>
+        <module>auth</module>
+    </modules>
 
 	<build>
 		<plugins>
