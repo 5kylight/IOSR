@@ -11,9 +11,9 @@ services:
   auth:
     image: localhost:5000/auth:latest
     restart: always
-    depends_on:
-     discovery:
-        condition: service_healthy
+#    depends_on:
+#     discovery:
+#        condition: service_healthy
     ports:
      - "8760:8760"
 
@@ -21,9 +21,9 @@ services:
     build: ./support/gateway
     image: localhost:5000/gateway:latest
     restart: always
-    depends_on:
-         discovery:
-            condition: service_healthy
+#    depends_on:
+#         -discovery:
+#            condition: service_healthy
 
     links:
         - discovery
@@ -33,9 +33,9 @@ services:
     build: ./core/dividers-product-service
     image: localhost:5000/dividers-product-service:latest
     restart: always
-    depends_on:
-         discovery:
-            condition: service_healthy
+#    depends_on:
+#         discovery:
+#            condition: service_healthy
     links:
         - discovery
     ports:
@@ -44,9 +44,9 @@ services:
     build: ./core/dividers-service
     image: localhost:5000/dividers-service:latest
     restart: always
-    depends_on:
-         discovery:
-            condition: service_healthy
+#    depends_on:
+#         discovery:
+#            condition: service_healthy
     links:
         - discovery
     ports:
