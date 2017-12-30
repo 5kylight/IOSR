@@ -45,22 +45,6 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
                 .autoApprove(true)
                 .authorities("FOO_READ", "FOO_WRITE")
                 .authorizedGrantTypes("implicit", "refresh_token", "password", "authorization_code");
-
-        // .and()
-        // .withClient("dividers-service")
-        // .secret("ala123")
-        // .authorizedGrantTypes("client_credentials", "refresh_token")
-        // .scopes("server")
-        // .and()
-        // .withClient("dividers-product-service")
-        // .secret("ala")
-        // .authorizedGrantTypes("client_credentials", "refresh_token")
-        // .scopes("server");
-//                    .and()
-//                        .withClient("notification-com.wiet.math.support.auth.userdetails")
-//                        .secret(env.getProperty("NOTIFICATION_SERVICE_PASSWORD"))
-//                        .authorizedGrantTypes("client_credentials", "refresh_token")
-//                        .scopes("server");
         // @formatter:on
     }
 
