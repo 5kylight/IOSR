@@ -12,4 +12,4 @@ eureka:
 
 logging:
     level:
-        ROOT: WARN
+        ROOT: INFO

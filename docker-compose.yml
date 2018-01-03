@@ -1,53 +1,82 @@
-version: '3.5'
+version: '3.4'
 services:
   discovery:
     build: ./support/discovery
-    image: localhost:5000/discovery:latest
+    image: localhost:5000/discovery
     restart: always
 
     ports:
      - "8761:8761"
-
+    deploy:
+      resources:
+        limits:
+          memory: 800M
+        reservations:
+          memory: 200M
   auth:
-    image: localhost:5000/auth:latest
+    build: ./support/discovery
+    image: localhost:5000/auth
     restart: always
-#    depends_on:
-#     discovery:
-#        condition: service_healthy
+    depends_on:
+      - discovery
     ports:
      - "8760:8760"
-
+    deploy:
+      resources:
+        limits:
+          memory: 800M
+        reservations:
+          memory: 200M
   gateway:
     build: ./support/gateway
-    image: localhost:5000/gateway:latest
+    image: localhost:5000/gateway
     restart: always
-#    depends_on:
-#         -discovery:
-#            condition: service_healthy
+    depends_on:
+      - discovery
+      - auth
 
     links:
         - discovery
     ports:
      - "8765:8765"
+    deploy:
+      resources:
+        limits:
+          memory: 1200M
+        reservations:
+          memory: 200M
   dividers-product:
     build: ./core/dividers-product-service
-    image: localhost:5000/dividers-product-service:latest
+    image: localhost:5000/dividers-product-service
     restart: always
-#    depends_on:
-#         discovery:
-#            condition: service_healthy
+    depends_on:
+      - discovery
+      - gateway
+
     links:
         - discovery
     ports:
      - "1111:1111"
+    deploy:
+      resources:
+        limits:
+          memory: 1200M
+        reservations:
+          memory: 200M
   dividers:
     build: ./core/dividers-service
-    image: localhost:5000/dividers-service:latest
+    image: localhost:5000/dividers-service
     restart: always
-#    depends_on:
-#         discovery:
-#            condition: service_healthy
+    depends_on:
+      - discovery
+
     links:
         - discovery
     ports:
      - "1112:1112"
+    deploy:
+      resources:
+        limits:
+          memory: 1200M
+        reservations:
+          memory: 200M
