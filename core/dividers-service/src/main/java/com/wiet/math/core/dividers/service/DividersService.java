@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -15,7 +16,7 @@ public class DividersService {
     @PreAuthorize("hasAuthority('DIVIDERS_COMPUTE')")
     @RequestMapping("/{integer}")
     public List<Integer> getDividers(@PathVariable("integer") int integer) {
-        return IntStream.rangeClosed(1, Math.abs(integer))
+        return integer == 0 ? Arrays.asList(0) : IntStream.rangeClosed(1, Math.abs(integer))
                 .filter(i -> integer % i == 0)
                 .boxed()
                 .collect(Collectors.toList());
