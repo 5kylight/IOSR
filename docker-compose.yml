@@ -10,9 +10,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 800M
+          memory: 1200M
         reservations:
-          memory: 200M
+          memory: 100M
   auth:
     build: ./support/discovery
     image: localhost:5000/auth
@@ -27,13 +27,18 @@ services:
           memory: 800M
         reservations:
           memory: 200M
+  logstash:
+    image: localhost:5000/logstash
+    restart: always
+    ports:
+      - "5001:5001"
+
   gateway:
     build: ./support/gateway
     image: localhost:5000/gateway
     restart: always
     depends_on:
       - discovery
-      - auth
 
     links:
         - discovery
@@ -51,7 +56,6 @@ services:
     restart: always
     depends_on:
       - discovery
-      - gateway
 
     links:
         - discovery

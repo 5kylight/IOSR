@@ -17,7 +17,7 @@ public class DividersProductService {
     @Autowired
     private DividersServiceClient dividersServiceClient;
 
-    @RequestMapping("/{integer}/string")
+    @RequestMapping("api/{integer}/string")
     public String getDividersAsStringInfo(@PathVariable("integer") int integer) {
         return buildResult(integer, this::buildStringInfo, "No dividers retrieved :(");
     }
@@ -39,7 +39,7 @@ public class DividersProductService {
         return dividers.stream().mapToLong(el -> (long) el).reduce(1, (a, b) -> a * b);
     }
 
-    @RequestMapping("/{integer}")
+    @RequestMapping("api/{integer}")
     public long getDividers(@PathVariable("integer") int integer) {
         return buildResult(integer, this::getProductAsLong, 0L);
     }

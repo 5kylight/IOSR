@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
 public class DividersService {
 
     @PreAuthorize("hasAuthority('DIVIDERS_COMPUTE')")
-    @RequestMapping("/{integer}")
+    @RequestMapping("/api/{integer}")
     public List<Integer> getDividers(@PathVariable("integer") int integer) {
         return IntStream.rangeClosed(1, Math.abs(integer))
                 .filter(i -> integer % i == 0)

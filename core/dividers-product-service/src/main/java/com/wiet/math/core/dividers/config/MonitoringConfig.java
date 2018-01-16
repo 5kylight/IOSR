@@ -1,4 +1,4 @@
-package com.wiet.math.core.dividers.monitoring;
+package com.wiet.math.core.dividers.config;
 
 
 import org.springframework.cloud.sleuth.sampler.AlwaysSampler;

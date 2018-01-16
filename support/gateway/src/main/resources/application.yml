@@ -10,6 +10,7 @@ endpoints:
         sensitive: false
 
 zuul:
+    prefix: /api
     routes:
         dividers:
             path: /dividers/**
