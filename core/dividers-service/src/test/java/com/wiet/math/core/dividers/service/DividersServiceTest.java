@@ -12,7 +12,7 @@ public class DividersServiceTest {
     public void testPositive() throws Exception {
         DividersService ds = new DividersService();
 
-        assertListEquals(ds.getDividers(0));
+        assertListEquals(ds.getDividers(0), 0);
         assertListEquals(ds.getDividers(1), 1);
         assertListEquals(ds.getDividers(2), 1, 2);
         assertListEquals(ds.getDividers(24), 1, 2, 3, 4, 6, 8, 12, 24);
@@ -33,7 +33,7 @@ public class DividersServiceTest {
     public void testNegative() throws Exception {
         DividersService ds = new DividersService();
 
-        assertListEquals(ds.getDividers(0));
+        assertListEquals(ds.getDividers(0), 0);
         assertListEquals(ds.getDividers(-1), 1);
         assertListEquals(ds.getDividers(-2), 1, 2);
         assertListEquals(ds.getDividers(-24), 1, 2, 3, 4, 6, 8, 12, 24);
