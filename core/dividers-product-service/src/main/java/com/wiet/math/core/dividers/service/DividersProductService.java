@@ -2,6 +2,8 @@ package com.wiet.math.core.dividers.service;
 
 import com.wiet.math.core.dividers.communication.DividersServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,8 +21,14 @@ public class DividersProductService {
     private DividersServiceClient dividersServiceClient;
 
     @RequestMapping(value = "api/{integer}/string", method = RequestMethod.GET)
-    public String getDividersAsStringInfo(@PathVariable("integer") int integer) {
-        return buildResult(integer, this::buildStringInfo, "No dividers retrieved :(");
+    public ResponseEntity<String> getDividersAsStringInfo(@PathVariable("integer") int integer) {
+        if (Math.abs(integer) < 21) {
+            String result = buildResult(integer, this::buildStringInfo, "No dividers retrieved :(");
+            return ResponseEntity.ok(result);
+        } else {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+
     }
 
     private String buildStringInfo(List<Integer> factors) {
@@ -41,8 +49,14 @@ public class DividersProductService {
     }
 
     @RequestMapping(value = "api/{integer}", method = RequestMethod.GET)
-    public long getDividers(@PathVariable("integer") int integer) {
-        return buildResult(integer, this::getProductAsLong, 0L);
+    public ResponseEntity<Long> getDividers(@PathVariable("integer") int integer) {
+        if (Math.abs(integer) < 21) {
+            long result = buildResult(integer, this::getProductAsLong, 0L);
+            return ResponseEntity.ok(result);
+        } else {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+
     }
 
     private <T> T buildResult(Integer integer, Function<List<Integer>, T> onSuccess, T defaultVal) {
