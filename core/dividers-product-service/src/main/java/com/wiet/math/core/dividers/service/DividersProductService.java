@@ -4,6 +4,7 @@ import com.wiet.math.core.dividers.communication.DividersServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class DividersProductService {
     @Autowired
     private DividersServiceClient dividersServiceClient;
 
-    @RequestMapping("api/{integer}/string")
+    @RequestMapping(value = "api/{integer}/string", method = RequestMethod.GET)
     public String getDividersAsStringInfo(@PathVariable("integer") int integer) {
         return buildResult(integer, this::buildStringInfo, "No dividers retrieved :(");
     }
@@ -39,7 +40,7 @@ public class DividersProductService {
         return dividers.stream().mapToLong(el -> (long) el).reduce(1, (a, b) -> a * b);
     }
 
-    @RequestMapping("api/{integer}")
+    @RequestMapping(value = "api/{integer}", method = RequestMethod.GET)
     public long getDividers(@PathVariable("integer") int integer) {
         return buildResult(integer, this::getProductAsLong, 0L);
     }

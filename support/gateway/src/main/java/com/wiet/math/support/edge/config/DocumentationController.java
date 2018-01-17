@@ -12,13 +12,13 @@ import java.util.List;
 @Component
 @Primary
 @EnableAutoConfiguration
-public class SwaggerResourcesProviderImpl implements SwaggerResourcesProvider {
+public class DocumentationController implements SwaggerResourcesProvider {
 
     @Override
     public List<SwaggerResource> get() {
         List<SwaggerResource> resources = new ArrayList<>();
-        resources.add(swaggerResource("dividers-service", "/api/dividers-service/v2/api-docs", "2.0"));
-        resources.add(swaggerResource("dividers-product-service", "/api/dividers-product-service/v2/api-docs", "2.0"));
+        resources.add(swaggerResource("dividers-service", "/api/dividers/v2/api-docs", "2.0"));
+        resources.add(swaggerResource("dividers-product-service", "/api/dividers-product/v2/api-docs", "2.0"));
         return resources;
     }
 

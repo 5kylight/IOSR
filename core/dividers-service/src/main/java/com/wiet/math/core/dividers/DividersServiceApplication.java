@@ -7,7 +7,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class DividersServiceApplication  extends ResourceServerConfigurerAdapter {
+public class DividersServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DividersServiceApplication.class, args);

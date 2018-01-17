@@ -16,7 +16,7 @@ services:
   auth:
     build: ./support/discovery
     image: localhost:5000/auth
-    restart: always
+    restart: unless-stopped
     depends_on:
       - discovery
     ports:
@@ -27,16 +27,16 @@ services:
           memory: 800M
         reservations:
           memory: 200M
-  logstash:
-    image: localhost:5000/logstash
-    restart: always
-    ports:
-      - "5001:5001"
+#  logstash:
+#    image: localhost:5000/logstash
+#    restart: unless-stopped
+#    ports:
+#      - "5001:5001"
 
   gateway:
     build: ./support/gateway
     image: localhost:5000/gateway
-    restart: always
+    restart: unless-stopped
     depends_on:
       - discovery
 
@@ -53,7 +53,7 @@ services:
   dividers-product:
     build: ./core/dividers-product-service
     image: localhost:5000/dividers-product-service
-    restart: always
+    restart: unless-stopped
     depends_on:
       - discovery
 
@@ -70,7 +70,7 @@ services:
   dividers:
     build: ./core/dividers-service
     image: localhost:5000/dividers-service
-    restart: always
+    restart: unless-stopped
     depends_on:
       - discovery
 

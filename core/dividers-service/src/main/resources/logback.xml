@@ -39,7 +39,7 @@
         </encoder>
     </appender>
 
-    <root level="warn">
+    <root level="INFO">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="STASH" />
     </root>
